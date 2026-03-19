@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mehrin Hossain — Portfolio</title>
+  <meta name="description" content="Portfolio website: projects, resume, and contact." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#c9184a;           /* background */
+      --card:#11141a;         /* card surface */
+      --muted:#9aa3b2;        /* secondary text */
+      --text:#e7ecf4;         /* primary text */
+      --brand:#6ea8fe;        /* accent */
+      --ring:#2a66ff44;       /* focus ring */
+      --max:1100px;           /* max width */
+      --radius:18px;          /* roundness */
+      --shadow:0 10px 30px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.02);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      background:radial-gradient(1200px 800px at 10% -10%, #14203b 0%, transparent 40%),
+                 radial-gradient(800px 600px at 110% -20%, #11201b 0%, transparent 45%),
+                 var(--bg);
+      color:var(--text);
+    }
+    a{color:inherit;text-decoration:none}
+    .container{max-width:var(--max);margin:auto;padding:0 20px}
+    /* Header */
+    header{
+      position:sticky; top:0; z-index:50; backdrop-filter:saturate(160%) blur(8px);
+      background:linear-gradient(180deg, rgba(11,13,17,.9), rgba(11,13,17,.6));
+      border-bottom:1px solid #1a202c; 
+    }
+    .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+    .brand{display:flex;gap:10px;align-items:center;font-weight:700}
+    .brand-logo{width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,var(--brand),#7ef3c3);box-shadow:var(--shadow)}
+    nav ul{display:flex;gap:18px;list-style:none;margin:0;padding:0}
+    nav a{padding:8px 10px;border-radius:10px;color:var(--muted)}
+    nav a:hover,nav a.active{background:#17202c;color:var(--text)}
+    .menu-btn{display:none}
+   /* Hero */
+.hero{
+  padding:160px 0 120px;
+  position:relative;
+  overflow:hidden;
+}
+
+.hero-video{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  z-index:-1;
+  opacity:0.35;
+}
+
+.hero-grid{
+  display:grid;
+  grid-template-columns:1.3fr 1fr;
+  gap:28px;
+  align-items:center;
+}
+
+.eyebrow{
+  display:inline-block;
+  padding:6px 10px;
+  border-radius:999px;
+  background:#12233b;
+  color:#a8c1ff;
+  border:1px solid #1d3b66;
+  margin-bottom:14px;
+  font-weight:600;
+  font-size:12px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+
+h1{
+  margin:0 0 12px;
+  font-size:44px;
+  line-height:1.05;
+}
+
+.lede{
+  color:var(--muted);
+  font-size:18px;
+}
+
+.hero-card{
+  background:linear-gradient(180deg,#121620,#0f131b);
+  border:1px solid #1c2330;
+  border-radius:var(--radius);
+  padding:24px;
+  box-shadow:var(--shadow);
+}
+
+.cta{
+  display:flex;
+  gap:12px;
+  margin-top:22px;
+}
+
+.btn{
+  padding:12px 16px;
+  border-radius:12px;
+  border:1px solid #2a3344;
+  background:#151d29;
+  color:#cfe1ff;
+  font-weight:600;
+}
+
+.btn.primary{
+  background:linear-gradient(135deg,var(--brand),#7ef3c3);
+  color:#0b1020;
+  border:none;
+}
+
+.btn:hover{
+  filter:brightness(1.05);
+}
+
+    /* Sections */
+    section{padding:56px 0}
+    .section-h{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
+    .section-h h2{margin:0;font-size:24px}
+    .grid{display:grid;gap:16px}
+    .cards-3{grid-template-columns:repeat(3,1fr)}
+    .card{background:var(--card); border:1px solid #1b2230; border-radius:var(--radius); padding:18px; box-shadow:var(--shadow)}
+    .card h3{margin:0 0 6px;font-size:18px}
+    .card p{margin:0;color:var(--muted)}
+    .tag{display:inline-block;margin-top:10px;padding:4px 8px;border:1px solid #273043;border-radius:999px;color:#a9b4c6;font-size:12px}
+
+    /* Timeline (Experience) */
+    .timeline{position:relative}
+    .timeline::before{content:"";position:absolute;left:10px;top:0;bottom:0;width:2px;background:#223049}
+    .t-item{position:relative;padding-left:36px;margin-bottom:22px}
+    .t-item::before{content:"";position:absolute;left:2px;top:4px;width:16px;height:16px;border-radius:50%;background:linear-gradient(135deg,#6ea8fe,#7ef3c3);box-shadow:0 0 0 3px #0f1522}
+    .t-role{font-weight:700}
+    .t-meta{color:var(--muted);font-size:14px;margin-bottom:6px}
+
+    /* Calendar */
+    .calendar-embed{aspect-ratio:16/9;border:0;width:100%;border-radius:14px;filter:drop-shadow(0 6px 24px rgba(0,0,0,.35))}
+
+    /* Footer */
+    footer{padding:30px 0;color:#8f98a8;border-top:1px solid #1a202c}
+
+    /* Mobile */
+    @media (max-width: 900px){
+      .hero-grid{grid-template-columns:1fr}
+      .cards-3{grid-template-columns:1fr}
+      .menu-btn{display:block;border:1px solid #283244;background:#121826;color:#c7d2e5;padding:8px 10px;border-radius:10px}
+      nav ul{display:none;position:absolute;right:20px;top:60px;background:#0e1420;border:1px solid #1b2433;border-radius:12px;padding:10px;width:200px}
+      nav ul.open{display:flex;flex-direction:column}
+    }
+    /* Focus */
+    :focus-visible{outline:2px solid var(--brand); outline-offset:3px; box-shadow:0 0 0 6px var(--ring)}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand"><span class="brand-logo"></span> <span>Mehrin Hossain</span></div>
+      <button class="menu-btn" aria-controls="menu" aria-expanded="false">Menu</button>
+      <nav>
+        <ul id="menu">
+          <li><a href="#about" class="active">About</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#calendar">Calendar</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <video class="hero-video" autoplay muted loop playsinline>
+    <source src="webback.mp4" type="video/mp4">
+</video>
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">Software Design · AI & Full‑Stack</span>
+          <h1>Hi, I’m <span style="color:var(--brand)">Mehrin Hossain</span> I'm a third year at Queens University for Computing! </h1>
+          <p class="lede">Full‑stack developer and AI tinkerer focusing on practical automation, chatbots, and delightful user interfaces.
+          </p>
+          <div class="cta">
+            <a class="btn primary" href="#projects">View My Projects!</a>
+            <a class="btn" href="#contact">Contact</a>
+          </div>
+        </div>
+        <div class="hero-card">
+          <h3 style="margin-top:0">Quick Stats</h3>
+          <p>Languages: Python, JavaScript, Java · Cloud: Azure · E‑comm: Shopify (Liquid)</p>
+          <p>Clubs: QWiC, QQCC, COMPSA </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about">
+      <div class="container">
+        <div class="section-h"><h2>About</h2></div>
+        <div class="card">
+          <p>I’m a Computing student with a strong passion for software engineering, coding, and cybersecurity. I love understanding how systems work—from low-level logic and networking to building full-stack applications and secure digital tools. My engineering mindset pushes me to experiment, create, solve problems, and constantly refine my skills through hands-on projects.
+
+Outside of academics, I’m someone who genuinely enjoys life. I love gaming, hanging out with friends, exploring new places, travelling, and spending time outdoors. These experiences keep me curious, balanced, and creative, and they inspire the way I approach technology and problem-solving.
+
+My goal is to grow as an engineer who builds reliable, user-focused, and secure solutions—while continuing to learn, innovate, and push myself to new levels.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+      <div class="container">
+        <div class="section-h"><h2>Projects</h2><a class="btn" href="#">GitHub →</a></div>
+        <div class="grid cards-3">
+          <article class="card">
+            <h3>AI Support Chatbot</h3>
+            <p>Azure Bot + Python NLP automating FAQs and order status with fallbacks to live chat.</p>
+            <span class="tag">Python · Azure · NLP</span>
+          </article>
+          <article class="card">
+            <h3>Energy Monitoring Dashboard</h3>
+            <p>Flask + Stream ingestion + Power BI to visualize real‑time energy trends.</p>
+            <span class="tag">Flask · Azure Stream · Power BI</span>
+          </article>
+          <article class="card">
+            <h3>Shopify Theme Customization</h3>
+            <p>Liquid + JS enhancements, Klaviyo flows, and Chatwoot integration for support.</p>
+            <span class="tag">Shopify · Liquid · JS</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience Timeline -->
+    <section id="experience">
+      <div class="container">
+        <div class="section-h"><h2>Experience</h2></div>
+        <div class="timeline">
+          <div class="t-item">
+            <div class="t-role">Full‑Stack Developer — StepCorrect</div>
+            <div class="t-meta">2023–Present · Toronto (Shopify / AI / RPA)</div>
+            <div>Shopify custom theme, AI chatbot (Chatwoot + Python), Klaviyo automations.</div>
+          </div>
+          <div class="t-item">
+            <div class="t-role">Freelance Developer — Various Startups</div>
+            <div class="t-meta">2022–Present · Remote</div>
+            <div>Web apps, data dashboards, SEO + analytics, API integrations.</div>
+          </div>
+          <div class="t-item">
+            <div class="t-role">Robotics & Coding Instructor — Snapology</div>
+            <div class="t-meta">2022–2023 · Toronto</div>
+            <div>Python/Java basics with LEGO robotics, curriculum and workshops.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Calendar Embed (replace src with your Google Calendar share link) -->
+    <section id="calendar">
+      <div class="container">
+        <div class="section-h"><h2>Calendar</h2><span class="tag">Google Calendar embed</span></div>
+        <iframe class="calendar-embed" src="https://calendar.google.com/calendar/embed?src=youremail%40gmail.com&ctz=America%2FToronto"></iframe>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <div class="container">
+        <div class="section-h"><h2>Contact</h2></div>
+        <div class="card">
+          <p>Reach out via <a href="mailto:you@example.ca">23nt1@queensu.ca</a> or connect on <a href="#">LinkedIn</a>. 
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">© <span id="y"></span> Mehrin Hossain — Built with clean HTML/CSS/JS</div>
+  </footer>
+
+  <script>
+    // mobile menu + smooth active links
+    const btn = document.querySelector('.menu-btn');
+    const menu = document.getElementById('menu');
+    btn?.addEventListener('click', ()=>{
+      const open = menu.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open? 'true':'false');
+    });
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        const id = a.getAttribute('href');
+        const el = document.querySelector(id);
+        if(el){ e.preventDefault(); el.scrollIntoView({behavior:'smooth', block:'start'}); }
+      })
+    })
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+
+  <!-- Optional: Chatwoot embed (replace YOUR_TOKEN and BASE_URL) -->
+  <!--
+  <script>
+    (function(d,t){var BASE_URL="https://app.chatwoot.com";var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src=BASE_URL+"/packs/js/sdk.js";g.defer=true;g.async=true;s.parentNode.insertBefore(g,s);g.onload=function(){window.chatwootSDK.run({websiteToken:"YOUR_TOKEN",baseUrl:BASE_URL});};})(document,"script");
+  </script>
+  -->
+
+</body>
+</html>
