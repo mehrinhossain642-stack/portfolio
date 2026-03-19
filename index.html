@@ -1,141 +1,329 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Mehrin Hossain Portfolio</title>
-
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mehrin Hossain — Portfolio</title>
+  <meta name="description" content="Portfolio website: projects, resume, and contact." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      color: white;
-      background: black;
+    :root{
+      --bg:#c9184a;
+      --card:#11141a;
+      --muted:#9aa3b2;
+      --text:#e7ecf4;
+      --brand:#6ea8fe;
+      --ring:#2a66ff44;
+      --max:1100px;
+      --radius:18px;
+      --shadow:0 10px 30px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.02);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      background:radial-gradient(1200px 800px at 10% -10%, #14203b 0%, transparent 40%),
+                 radial-gradient(800px 600px at 110% -20%, #11201b 0%, transparent 45%),
+                 var(--bg);
+      color:var(--text);
+    }
+    a{color:inherit;text-decoration:none}
+    .container{max-width:var(--max);margin:auto;padding:0 20px}
+    header{
+      position:sticky; top:0; z-index:50; backdrop-filter:saturate(160%) blur(8px);
+      background:linear-gradient(180deg, rgba(11,13,17,.9), rgba(11,13,17,.6));
+      border-bottom:1px solid #1a202c;
+    }
+    .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+    .brand{display:flex;gap:10px;align-items:center;font-weight:700}
+    .brand-logo{width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,var(--brand),#7ef3c3);box-shadow:var(--shadow)}
+    nav ul{display:flex;gap:18px;list-style:none;margin:0;padding:0}
+    nav a{padding:8px 10px;border-radius:10px;color:var(--muted)}
+    nav a:hover,nav a.active{background:#17202c;color:var(--text)}
+    .menu-btn{display:none}
+
+    .hero{
+      padding:160px 0 120px;
+      position:relative;
+      overflow:hidden;
     }
 
-    video.bg {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      object-fit: cover;
-      z-index: -1;
+    .hero-video{
+      position:absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      z-index:-1;
+      opacity:0.35;
     }
 
-    .container {
-      padding: 40px;
-      max-width: 1000px;
-      margin: auto;
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.3fr 1fr;
+      gap:28px;
+      align-items:center;
     }
 
-    h1, h2 {
-      margin-bottom: 10px;
+    .eyebrow{
+      display:inline-block;
+      padding:6px 10px;
+      border-radius:999px;
+      background:#12233b;
+      color:#a8c1ff;
+      border:1px solid #1d3b66;
+      margin-bottom:14px;
+      font-weight:600;
+      font-size:12px;
+      letter-spacing:.08em;
+      text-transform:uppercase;
     }
 
-    .section {
-      margin-bottom: 60px;
+    h1{
+      margin:0 0 12px;
+      font-size:44px;
+      line-height:1.05;
     }
 
-    .card {
-      background: rgba(0,0,0,0.7);
-      padding: 20px;
-      margin: 15px 0;
-      border-radius: 10px;
+    .lede{
+      color:var(--muted);
+      font-size:18px;
     }
 
-    .btn {
-      display: inline-block;
-      margin-top: 10px;
-      padding: 8px 14px;
-      background: #2563eb;
-      color: white;
-      text-decoration: none;
-      border-radius: 6px;
+    .hero-card{
+      background:linear-gradient(180deg,#121620,#0f131b);
+      border:1px solid #1c2330;
+      border-radius:var(--radius);
+      padding:24px;
+      box-shadow:var(--shadow);
     }
+
+    .cta{
+      display:flex;
+      gap:12px;
+      margin-top:22px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      padding:12px 16px;
+      border-radius:12px;
+      border:1px solid #2a3344;
+      background:#151d29;
+      color:#cfe1ff;
+      font-weight:600;
+    }
+
+    .btn.primary{
+      background:linear-gradient(135deg,var(--brand),#7ef3c3);
+      color:#0b1020;
+      border:none;
+    }
+
+    .btn:hover{
+      filter:brightness(1.05);
+    }
+
+    section{padding:56px 0}
+    .section-h{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
+    .section-h h2{margin:0;font-size:24px}
+    .grid{display:grid;gap:16px}
+    .cards-3{grid-template-columns:repeat(3,1fr)}
+    .card{background:var(--card); border:1px solid #1b2230; border-radius:var(--radius); padding:18px; box-shadow:var(--shadow)}
+    .card h3{margin:0 0 6px;font-size:18px}
+    .card p{margin:0;color:var(--muted)}
+    .tag{display:inline-block;margin-top:10px;padding:4px 8px;border:1px solid #273043;border-radius:999px;color:#a9b4c6;font-size:12px}
+
+    .timeline{position:relative}
+    .timeline::before{content:"";position:absolute;left:10px;top:0;bottom:0;width:2px;background:#223049}
+    .t-item{position:relative;padding-left:36px;margin-bottom:22px}
+    .t-item::before{content:"";position:absolute;left:2px;top:4px;width:16px;height:16px;border-radius:50%;background:linear-gradient(135deg,#6ea8fe,#7ef3c3);box-shadow:0 0 0 3px #0f1522}
+    .t-role{font-weight:700}
+    .t-meta{color:var(--muted);font-size:14px;margin-bottom:6px}
+    .t-desc{color:var(--text); line-height:1.6}
+
+    .calendar-embed{aspect-ratio:16/9;border:0;width:100%;border-radius:14px;filter:drop-shadow(0 6px 24px rgba(0,0,0,.35))}
+
+    footer{padding:30px 0;color:#8f98a8;border-top:1px solid #1a202c}
+
+    @media (max-width: 900px){
+      .hero-grid{grid-template-columns:1fr}
+      .cards-3{grid-template-columns:1fr}
+      .menu-btn{display:block;border:1px solid #283244;background:#121826;color:#c7d2e5;padding:8px 10px;border-radius:10px}
+      nav ul{display:none;position:absolute;right:20px;top:60px;background:#0e1420;border:1px solid #1b2433;border-radius:12px;padding:10px;width:200px}
+      nav ul.open{display:flex;flex-direction:column}
+    }
+
+    :focus-visible{outline:2px solid var(--brand); outline-offset:3px; box-shadow:0 0 0 6px var(--ring)}
   </style>
 </head>
-
 <body>
-
-<video autoplay muted loop class="bg">
-  <source src="webback.mp4" type="video/mp4">
-</video>
-
-<div class="container">
-
-  <!-- HERO -->
-  <section class="section">
-    <h1>Mehrin Hossain</h1>
-    <p>Computer Science Student | Full Stack Developer | AI & Software Engineering</p>
-
-    <a class="btn" href="mailto:23nt1@queensu.ca">Email</a>
-    <a class="btn" href="https://github.com/mehrinhossain642-stack" target="_blank">GitHub</a>
-    <a class="btn" href="https://www.linkedin.com/in/mehrin-hossain-92a7642b9/" target="_blank">LinkedIn</a>
-  </section>
-
-  <!-- PROJECTS -->
-  <section class="section">
-    <h2>Projects</h2>
-
-    <div class="card">
-      <h3>HosLaw AI</h3>
-      <p>AI-powered legal assistant that helps users understand laws and legal concepts.</p>
-      <a class="btn" href="https://hos-law.vercel.app" target="_blank">View Project</a>
+  <header>
+    <div class="container nav">
+      <div class="brand"><span class="brand-logo"></span> <span>Mehrin Hossain</span></div>
+      <button class="menu-btn" aria-controls="menu" aria-expanded="false">Menu</button>
+      <nav>
+        <ul id="menu">
+          <li><a href="#about" class="active">About</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#calendar">Calendar</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
     </div>
+  </header>
 
-    <div class="card">
-      <h3>Last Breath Standing (In Progress)</h3>
-      <p>Top-down Unity survival shooter featuring a novel voice-controlled gameplay system.</p>
-    </div>
+  <main>
+    <section class="hero">
+      <video class="hero-video" autoplay muted loop playsinline>
+        <source src="webback.mp4" type="video/mp4">
+      </video>
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">Software Design · AI & Full-Stack</span>
+          <h1>Hi, I’m <span style="color:var(--brand)">Mehrin Hossain</span> — a third year Computing student at Queen’s University.</h1>
+          <p class="lede">Full-stack developer and AI builder with interests in software engineering, automation, cybersecurity, and creating practical tools with strong user experience.</p>
+          <div class="cta">
+            <a class="btn primary" href="#projects">View My Projects!</a>
+            <a class="btn" href="#contact">Contact</a>
+            <a class="btn" href="https://github.com/mehrinhossain642-stack" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a class="btn" href="https://www.linkedin.com/in/mehrin-hossain-92a7642b9/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          </div>
+        </div>
+        <div class="hero-card">
+          <h3 style="margin-top:0">Quick Stats</h3>
+          <p>Languages: Python, JavaScript, Java, HTML, CSS, Liquid</p>
+          <p>Focus: Full-Stack Development, AI Tools, Automation, Software Design</p>
+          <p>Clubs: QWiC, QQCC, COMPSA</p>
+        </div>
+      </div>
+    </section>
 
-    <div class="card">
-      <h3>Google Gemini Documentation Project</h3>
-      <p>Software architecture analysis and documentation of Gemini CLI using layered design and system modeling.</p>
-      <a class="btn" href="https://mehrinhossain642-stack.github.io/group4.github.io/" target="_blank">View Project</a>
-    </div>
+    <section id="about">
+      <div class="container">
+        <div class="section-h"><h2>About</h2></div>
+        <div class="card">
+          <p>I’m a Computing student with a strong passion for software engineering, coding, and cybersecurity. I love understanding how systems work—from low-level logic and networking to building full-stack applications and secure digital tools. My engineering mindset pushes me to experiment, create, solve problems, and constantly refine my skills through hands-on projects.</p>
+          <br>
+          <p>Outside of academics, I enjoy gaming, hanging out with friends, exploring new places, travelling, and spending time outdoors. These experiences keep me curious, balanced, and creative, and they inspire the way I approach technology and problem-solving.</p>
+          <br>
+          <p>My goal is to grow as an engineer who builds reliable, user-focused, and secure solutions while continuing to learn, innovate, and push myself to new levels.</p>
+        </div>
+      </div>
+    </section>
 
-  </section>
+    <section id="projects">
+      <div class="container">
+        <div class="section-h">
+          <h2>Projects</h2>
+          <a class="btn" href="https://github.com/mehrinhossain642-stack" target="_blank" rel="noopener noreferrer">GitHub →</a>
+        </div>
+        <div class="grid cards-3">
+          <article class="card">
+            <h3>HosLaw Bot</h3>
+            <p>AI-powered legal assistant designed to help users navigate legal information and interact with law-related resources through a clean interface.</p>
+            <span class="tag">AI · Law · Web App</span><br>
+            <a class="btn" style="margin-top:14px;display:inline-block" href="https://hos-law.vercel.app" target="_blank" rel="noopener noreferrer">View Project</a>
+          </article>
 
-  <!-- EXPERIENCE -->
-  <section class="section">
-    <h2>Experience</h2>
+          <article class="card">
+            <h3>Last Breath Standing</h3>
+            <p>A top-down survival shooter game built in Unity featuring a novel voice-controlled gameplay mechanic. Currently in progress.</p>
+            <span class="tag">Unity · C# · In Progress</span>
+          </article>
 
-    <div class="card">
-      <h3>Teaching Assistant — CISC 223: Software Specifications</h3>
-      <p><strong>Queen’s University | Winter 2026</strong></p>
-      <ul>
-        <li>Supported instruction in formal methods and software specification concepts</li>
-        <li>Led tutorials and office hours, providing academic support to students</li>
-        <li>Assisted with grading and feedback, emphasizing correctness and precision</li>
-        <li>Reinforced structured reasoning in software design</li>
-      </ul>
-    </div>
+          <article class="card">
+            <h3>Google Gemini Documentation Project</h3>
+            <p>Software architecture analysis and documentation project examining Gemini CLI through layered architecture, subsystem modeling, and design reasoning.</p>
+            <span class="tag">Architecture · Documentation · Analysis</span><br>
+            <a class="btn" style="margin-top:14px;display:inline-block" href="https://mehrinhossain642-stack.github.io/group4.github.io/" target="_blank" rel="noopener noreferrer">View Project</a>
+          </article>
+        </div>
+      </div>
+    </section>
 
-    <div class="card">
-      <h3>Full Stack Developer — StepCorrect</h3>
-      <p><strong>Remote, ON | 2024 – Present</strong></p>
-      <ul>
-        <li>Built and customized Shopify site using Liquid, HTML, CSS, JavaScript</li>
-        <li>Integrated AI chatbot automating ~40% of customer inquiries</li>
-        <li>Configured Klaviyo for automated email marketing</li>
-        <li>Implemented RPA workflows for automation</li>
-      </ul>
-    </div>
+    <section id="experience">
+      <div class="container">
+        <div class="section-h"><h2>Experience</h2></div>
+        <div class="timeline">
+          <div class="t-item">
+            <div class="t-role">Teaching Assistant — CISC 223: Software Specifications</div>
+            <div class="t-meta">Queen’s University · Winter 2026</div>
+            <div class="t-desc">
+              Supported instruction for Software Specifications, assisting students with formal methods and course concepts. Provided academic support through tutorials, office hours, and grading, while reinforcing precise reasoning and correctness in software design specifications.
+            </div>
+          </div>
 
-    <div class="card">
-      <h3>Robotics & Coding Instructor — Snapology</h3>
-      <p><strong>Toronto, ON | 2022 – 2023</strong></p>
-      <ul>
-        <li>Taught Python, Java, and STEM concepts using LEGO robotics</li>
-        <li>Adapted teaching for different skill levels</li>
-        <li>Encouraged engagement in computing</li>
-      </ul>
-    </div>
+          <div class="t-item">
+            <div class="t-role">Full Stack Developer — StepCorrect</div>
+            <div class="t-meta">Remote, ON · 2024 – Present</div>
+            <div class="t-desc">
+              Built and customized a Shopify e-commerce site using Liquid, HTML, CSS, and JavaScript with responsive design. Integrated an AI chatbot using Chatwoot and Python NLP APIs, automating 40% of customer inquiries. Configured Klaviyo for automated email marketing and lifecycle management, and implemented RPA workflows for automating product updates and internal reporting.
+            </div>
+          </div>
 
-  </section>
+          <div class="t-item">
+            <div class="t-role">Robotics & Coding Instructor — Snapology</div>
+            <div class="t-meta">Toronto, ON · 2022 – 2023</div>
+            <div class="t-desc">
+              Taught Python, Java, and STEM concepts to students across multiple TDSB and TDCSB schools using LEGO robotics. Tailored technical content to varying skill levels, fostering engagement and enthusiasm for computing.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-</div>
+    <section id="calendar">
+      <div class="container">
+        <div class="section-h"><h2>Calendar</h2><span class="tag">Google Calendar embed</span></div>
+        <iframe class="calendar-embed" src="https://calendar.google.com/calendar/embed?src=youremail%40gmail.com&ctz=America%2FToronto"></iframe>
+      </div>
+    </section>
 
+    <section id="contact">
+      <div class="container">
+        <div class="section-h"><h2>Contact</h2></div>
+        <div class="card">
+          <p>Reach out via <a href="mailto:23nt1@queensu.ca">23nt1@queensu.ca</a> or connect on <a href="https://www.linkedin.com/in/mehrin-hossain-92a7642b9/" target="_blank" rel="noopener noreferrer">LinkedIn</a>.</p>
+          <br>
+          <p>
+            <a class="btn" href="mailto:23nt1@queensu.ca">Email Me</a>
+            <a class="btn" href="https://github.com/mehrinhossain642-stack" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a class="btn" href="https://www.linkedin.com/in/mehrin-hossain-92a7642b9/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">© <span id="y"></span> Mehrin Hossain — Built with clean HTML/CSS/JS</div>
+  </footer>
+
+  <script>
+    const btn = document.querySelector('.menu-btn');
+    const menu = document.getElementById('menu');
+    btn?.addEventListener('click', ()=>{
+      const open = menu.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        const id = a.getAttribute('href');
+        const el = document.querySelector(id);
+        if(el){
+          e.preventDefault();
+          el.scrollIntoView({behavior:'smooth', block:'start'});
+        }
+      });
+    });
+
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
