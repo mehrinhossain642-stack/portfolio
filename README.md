@@ -71,17 +71,3 @@ https://portfolio-seven-inky-1rkxptopvh.vercel.app
 
 This project is for personal portfolio and educational purposes.
 
-Google Gemini Architecture Analysis
-Software architecture and documentation project analyzing Gemini CLI using layered architecture and subsystem modeling.
-
-Tesla Wrap Studio
-Interactive Tesla wrap customization tool that allows users to upload templates, place custom graphics, and export personalized wrap designs. Built with Next.js, React, and Canvas-based image editing tools with support for background removal and HEIC image uploads.
-
-Visit the portfolio here: https://portfolio-seven-inky-1rkxptopvh.vercel.app 
-
-Contact
-LinkedIn: https://www.linkedin.com/in/mehrin-hossain-92a7642b9/
-GitHub: https://github.com/mehrinhossain642-stack
-
-License:
-This project is for personal portfolio and educational purposes.
